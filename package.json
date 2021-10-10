@@ -1,0 +1,10 @@
+{
+  "name": "real-ecs",
+  "description": "test the ECS Develpment",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "ecsy": "^0.4.2",
+    "phaser": "^3.55.2"
+  }
+}
