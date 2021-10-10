@@ -3,7 +3,7 @@ import 'phaser';
 
 // Import stylesheets
 import './style.css';
-import AssetsData from './assets/index.json';
+import * as AssetsData from './assets';
 // import { Types } from 'phaser';
 // import type { Types as PhaserTypes } from 'phaser';
 
@@ -28,10 +28,8 @@ export default class Demo extends Phaser.Scene {
   }
 
   preload() {
-    const { images, glsl } = AssetsData.assets as Record<
-      string,
-      Record<string, string>
-    >;
+    const { images, glsl } = AssetsData;
+    
     console.log({ images, glsl, location });
 
     const hostName = location.hostname;
