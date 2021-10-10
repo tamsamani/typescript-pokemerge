@@ -1,4 +1,4 @@
-import { NumberPropType, Types } from 'ecsy';
+import { Types } from 'ecsy';
 import 'phaser';
 
 // Import stylesheets
