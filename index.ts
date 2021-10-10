@@ -3,7 +3,7 @@ import 'phaser';
 
 // Import stylesheets
 import './style.css';
-import AssetsData from './assets/all.json';
+import AssetsData from './assets/index.json';
 // import { Types } from 'phaser';
 // import type { Types as PhaserTypes } from 'phaser';
 
@@ -32,37 +32,25 @@ export default class Demo extends Phaser.Scene {
       string,
       Record<string, string>
     >;
+    console.log({ images, glsl, location });
 
-    Object.entries(images).forEach(([name, path]) => {
-      this.load.image(name, path);
-    });
+    const hostName = location.hostname;
 
-    Object.entries(glsl).forEach(([name, path]) => {
-      this.load.glsl(name, path);
-    });
+    images &&
+      Object.entries(images).forEach(([name, path]) => {
+        this.load.image(name, hostName + path);
+      });
+
+    glsl &&
+      Object.entries(glsl).forEach(([name, path]) => {
+        this.load.glsl(name, hostName + path);
+      });
   }
 
   create() {
     this.add
       .shader('RGB Shift Field', 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)
       .setOrigin(0);
-
-    // this.add
-    //   .shader(
-    //     'Plasma',
-    //     0,
-    //     (SCREEN_HEIGHT * 2) / 3,
-    //     SCREEN_WIDTH,
-    //     SCREEN_HEIGHT / 3
-    //   )
-    //   .setOrigin(0);
-
-    // const libsImage = this.add.image(0, 0, 'libs');
-
-    // console.log({ libsImage });
-
-    // .setOrigin(0)
-    // .setSize(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 3);
 
     const logo = this.add.image(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 'logo');
 
